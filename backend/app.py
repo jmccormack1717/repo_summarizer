@@ -2,8 +2,9 @@ import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from github_utils import get_readme_from_repo
-from llm_utils import summarize_text
+from .github_utils import get_readme_from_repo
+from .llm_utils import summarize_text
+
 
 app = FastAPI()
 
