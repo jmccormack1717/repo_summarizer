@@ -7,6 +7,9 @@ export default function App() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Use environment variable, fallback to localhost for dev
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -14,7 +17,7 @@ export default function App() {
     setSummary("");
 
     try {
-      const res = await axios.post("http://localhost:8000/summarize", {
+      const res = await axios.post(`${API_URL}/summarize`, {
         repo_url: repoUrl,
       });
       setSummary(res.data.summary);
